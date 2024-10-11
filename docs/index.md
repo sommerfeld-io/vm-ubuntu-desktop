@@ -14,12 +14,17 @@ This project is a collection of scripts and configuration files to setup a Ubunt
 ## Requirements and Features
 Automated and fully reproducible setup of a Ubuntu Desktop VM making the virtual machine ready for development. By doing this, the virtual machine becomes disposable and can be recreated at any time.
 
-## Usage
-Trigger the provisioning of the VM from a bootstrap script. The script installs Ansible and triggers the playbook. The Ansible playbook handles all the installation and configuration steps. A prerequisite is that the VM has internet access and `curl` installed.
+## Provisioning
+Trigger the provisioning of the VM from a bootstrap script. The script installs all needed packages and configures the VM. However, some manual steps after running the script might still remain.
 
-```bash
-curl https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/provision/bootstrap.sh | bash -
-```
+A prerequisite is that the VM has internet access and `curl` installed.
+
+- [ ] Run Bootstrap script:
+    ```
+    curl https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/provision/bootstrap.sh | bash -
+    ```
+- [ ] Git might still need some configuration - e.g. `git config --global user.email sebastian@sommerfeld.io` and `git config --global user.name sebastian`.
+- [ ] Configure public key on GitHub to allow cloning repositories, pulling and pushing via ssh.
 
 ## Contact
 Feel free to contact me via <sebastian@sommerfeld.io> or [raise an issue in this repository][file-issues].
