@@ -45,6 +45,26 @@ This section outlines the basic requirements and features of the project. These 
 !!! warning "Todo - Remove if not needed"
     The building block view shows the components of the system and their relationships. It is a high-level view of the system architecture. Maybe think of C4 model diagrams. Do not write too much text here.
 
+```kroki-ditaa
+
++--------+    +--------+
+|        |    |        |
+|  Web   |    |  API   |
+|        |    |        |
++--+-----+    +--+-----+
+   |             |
+   |             |
++--+-----+    +--+-----+
+|        |    |        |
+|  DB    |    |  DB    |
+|        |    |        |
++--------+    +--------+
+```
+
+```kroki-plantuml
+@from_file:_assets/demo.puml
+```
+
 ## Contact
 Feel free to contact me via <sebastian@sommerfeld.io> or [raise an issue in this repository][file-issues].
 
