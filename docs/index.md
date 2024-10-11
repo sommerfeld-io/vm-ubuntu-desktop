@@ -21,7 +21,7 @@ A prerequisite is that the VM has internet access and `curl` installed.
 
 - [ ] Run Bootstrap script:
     ```
-    curl https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/provision/bootstrap.sh | sudo bash -
+    curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/provision/bootstrap.sh | sudo bash -
     ```
 - [ ] Git might still need some configuration - e.g. `git config --global user.email sebastian@sommerfeld.io` and `git config --global user.name sebastian`.
 - [ ] Configure public key on GitHub to allow cloning repositories, pulling and pushing via ssh.
