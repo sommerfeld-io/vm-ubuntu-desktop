@@ -9,10 +9,9 @@
 
 		".vscode",
 
+		"components/provision",
+
 		"docs",
-		"docs/_assets/**",
-		"docs/about/**",
-		"docs/usage/**",
 		"target/docs/site/**",
 
 		"node_modules/**",

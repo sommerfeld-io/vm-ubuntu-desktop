@@ -1,12 +1,12 @@
 ---
-site_name: Template Repository
+site_name: Ubuntu Desktop Virtual Machine
 site_url: https://www.sommerfeld.io
 site_author: Sebastian Sommerfeld
 site_description: >-
-  Template Repository for sommerfeld.io projects.
+  Ubuntu Desktop Virtual Machine for sommerfeld.io projects.
 
-repo_name: sommerfeld-io/template-repository
-repo_url: https://github.com/sommerfeld-io/template-repository
+repo_name: sommerfeld-io/vm-ubuntu-desktop
+repo_url: https://github.com/sommerfeld-io/vm-ubuntu-desktop
 
 copyright: Copyright &copy; 2024 Sommerfeld.io
 
@@ -40,26 +40,12 @@ markdown_extensions:
 
 plugins:
   - kroki:
-  - search:
+  # - search:
 
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/sommerfeld-io/template-repository
-    - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/u/sommerfeldio
+      link: https://github.com/sommerfeld-io/vm-ubuntu-desktop
 
 nav:
   - Home: index.md
-  - How to Use:
-      - usage/index.md
-      - usage/markdown-components.md
-      - usage/markdown-from-code.md
-  - About this Project:
-      - about/development-guide.md
-      - about/project-structure.md
-      - about/contribute.md
-      - about/security.md
-      - about/code-of-conduct.md
-      - about/license.md
-      - about/terms.md

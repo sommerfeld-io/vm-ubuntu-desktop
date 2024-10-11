@@ -1,6 +1,6 @@
 {
-  "name": "template-repository",
-  "version": "1.2.0",
+  "name": "vm-ubuntu-desktop",
+  "version": "0.0.1",
   "directories": {
     "doc": "docs"
   },
