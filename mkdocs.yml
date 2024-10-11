@@ -23,7 +23,7 @@ theme:
     - content.tabs.link
     # - navigation.tabs
     - navigation.footer
-    # - navigation.sections
+    - navigation.sections
     - navigation.expand
     - navigation.tracking
 
@@ -48,4 +48,10 @@ extra:
       link: https://github.com/sommerfeld-io/vm-ubuntu-desktop
 
 nav:
-  - Home: index.md
+  - Getting Started: index.md
+  - About this project:
+      - about/contribute.md
+      - about/security.md
+      - about/code-of-conduct.md
+      - about/license.md
+      - about/terms.md

@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 # Ubuntu Desktop Virtual Machine
 [doc-website]: https://sommerfeld-io.github.io/vm-ubuntu-desktop
 [github-repo]: https://github.com/sommerfeld-io/vm-ubuntu-desktop

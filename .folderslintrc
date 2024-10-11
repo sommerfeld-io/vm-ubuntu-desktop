@@ -12,6 +12,7 @@
 		"components/provision",
 
 		"docs",
+		"docs/about",
 		"target/docs/site/**",
 
 		"node_modules/**",
