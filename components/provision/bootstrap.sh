@@ -21,8 +21,9 @@ sudo apt-get install -y curl
 sudo apt-get install -y gnupg
 sudo apt-get install -y lsb-release
 
-echo -e "$LOG_INFO ${Y}Install git${D}"
+echo -e "$LOG_INFO ${Y}Install tools${D}"
 sudo apt-get install -y git
+sudo apt-get install -y tilix
 
 echo -e "$LOG_INFO ${Y}Install docker${D}"
 echo -e "$LOG_INFO Uninstall old docker versions"
