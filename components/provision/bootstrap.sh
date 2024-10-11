@@ -43,4 +43,4 @@ sudo groupadd docker
 sudo usermod -aG docker "$USER"
 newgrp docker
 
-docker run -rm hello-world:latest
+docker run --rm hello-world:latest
