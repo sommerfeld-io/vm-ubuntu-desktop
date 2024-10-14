@@ -41,6 +41,8 @@ sudo apt-get install -y lsb-release
 caption "Install tools"
 sudo apt-get install -y git
 sudo apt-get install -y tilix
+sudo apt-get install -y tmux
+sudo apt-get install -y vim
 
 
 caption "Install docker"
