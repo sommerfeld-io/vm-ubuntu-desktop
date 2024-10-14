@@ -2,7 +2,7 @@
 [doc-website]: https://sommerfeld-io.github.io/vm-ubuntu-desktop
 [github-repo]: https://github.com/sommerfeld-io/vm-ubuntu-desktop
 [file-issues]: https://github.com/sommerfeld-io/vm-ubuntu-desktop/issues
-[project-board]: https://github.com/orgs/sommerfeld-io/projects/1/views/17
+[project-board]: https://github.com/orgs/sommerfeld-io/projects/1/views/1
 
 This project is a collection of scripts and configuration files to setup a Ubuntu Desktop VM.
 
