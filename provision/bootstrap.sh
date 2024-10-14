@@ -24,6 +24,7 @@ function caption() {
 caption "Info"
 echo "User     = $USER"
 echo "Hostname = $HOSTNAME"
+echo "Home dr  = $HOME"
 
 
 caption "Update apt cache"
