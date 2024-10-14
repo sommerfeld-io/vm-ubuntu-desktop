@@ -4,7 +4,7 @@
 [file-issues]: https://github.com/sommerfeld-io/vm-ubuntu-desktop/issues
 [project-board]: https://github.com/orgs/sommerfeld-io/projects/1/views/17
 
-This project is a collection of scripts and configuration files to setup a Ubuntu Desktop VM. The VM is not managed through Vagrant.
+This project is a collection of scripts and configuration files to setup a Ubuntu Desktop VM.
 
 - [Documentation Website][doc-website]
 - [Github Repository][github-repo]
