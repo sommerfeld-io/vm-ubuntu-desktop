@@ -43,6 +43,7 @@ sudo apt-get install -y git
 sudo apt-get install -y tilix
 sudo apt-get install -y tmux
 sudo apt-get install -y vim
+sudo snap install --classic code
 
 
 caption "Install docker"
@@ -64,9 +65,6 @@ if ! getent group docker > /dev/null; then
 fi
 sudo usermod -aG docker "$USER"
 newgrp docker
-
-caption "Install VSCode"
-sudo snap install --classic code
 
 caption "Docker version"
 docker --version
