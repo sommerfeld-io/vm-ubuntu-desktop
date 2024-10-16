@@ -25,7 +25,7 @@ A prerequisite is that the VM has internet access and `curl` installed.
     ```
 - Git might still need some configuration - e.g. `git config --global user.email sebastian@sommerfeld.io` and `git config --global user.name sebastian`.
 - Configure public key on GitHub to allow cloning repositories, pulling and pushing via ssh.
-- Maybe you still need to add the user to the docker group
+- Maybe you still need to add your user from inside the VM to the docker group
     ```bash
     sudo usermod -aG docker "$USER"
     ```
@@ -33,7 +33,7 @@ A prerequisite is that the VM has internet access and `curl` installed.
 ## Run locally with Vagrant
 To test the provisioning scripts locally, you can use Vagrant. The `Vagrantfile` is already included in this repository. To start/stop the Vagrantbox, simply use the `vagrant.sh` script from the root of this repository (next to the `Vagrantfile`). The `bootstrap.sh` is used to provision the Vagrantbox.
 
-- Maybe you still need to add the user to the docker group
+- Maybe you still need to add the `vagrant` user to the docker group (first connect to the Vagrantbox using `vagrant ssh`)
     ```bash
     sudo usermod -aG docker "$USER"
     ```
