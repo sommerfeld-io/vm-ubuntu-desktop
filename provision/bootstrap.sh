@@ -65,6 +65,9 @@ fi
 sudo usermod -aG docker "$USER"
 newgrp docker
 
+caption "Install VSCode"
+sudo snap install --classic code
+
 caption "Docker version"
 docker --version
 docker compose --version
