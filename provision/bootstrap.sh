@@ -43,6 +43,8 @@ sudo apt-get install -y git
 sudo apt-get install -y tilix
 sudo apt-get install -y tmux
 sudo apt-get install -y vim
+sudo apt-get install -y ncdu
+sudo apt-get install -y neofetch
 sudo snap install --classic code
 
 
