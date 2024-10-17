@@ -31,20 +31,19 @@ caption "Update apt cache"
 sudo apt-get update
 
 
-caption "Install basics"
-sudo apt-get install -y ca-certificates
-sudo apt-get install -y curl
-sudo apt-get install -y gnupg
-sudo apt-get install -y lsb-release
-
-
-caption "Install tools"
-sudo apt-get install -y git
-sudo apt-get install -y tilix
-sudo apt-get install -y tmux
-sudo apt-get install -y vim
-sudo apt-get install -y ncdu
-sudo apt-get install -y neofetch
+caption "Install packages and tools"
+sudo apt-get install -y ca-certificates \
+  curl \
+  gnupg \
+  lsb-release \
+  git \
+  tilix \
+  tmux \
+  vim \
+  ncdu \
+  neofetch \
+  htop \
+  jq
 sudo snap install --classic code
 
 
@@ -60,7 +59,11 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce \
+  docker-ce-cli \
+  containerd.io \
+  docker-buildx-plugin \
+  docker-compose-plugin
 
 if ! getent group docker > /dev/null; then
     sudo groupadd docker
@@ -72,9 +75,13 @@ fi
 sudo usermod -aG docker "$USER"
 newgrp docker
 
+caption "Cleanup apt"
+sudo apt-get clean
+rm -rf /var/lib/apt/lists/*
+
 caption "Docker version"
-docker --version
-docker compose --version
+docker version
+docker compose version
 
 caption "Test docker"
 docker run --rm hello-world:latest
