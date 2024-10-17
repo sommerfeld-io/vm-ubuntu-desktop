@@ -62,6 +62,10 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 if ! getent group docker > /dev/null; then
     sudo groupadd docker
 fi
+
+if id "vagrant" &>/dev/null; then
+  sudo usermod -aG docker vagrant
+fi
 sudo usermod -aG docker "$USER"
 newgrp docker
 
