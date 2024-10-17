@@ -42,7 +42,7 @@ To test the provisioning scripts locally, you can use Vagrant. The `Vagrantfile`
 To start Portainer, download the `docker-compose.yml` file and start the service. The portainer password is written from the `docker-compose.yml` file to the local filesystem when starting the stack. The password is stored in the textfile `portainer.passwd`.
 
 ```bash
-curl -o docker-compose.yml curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/portainer/docker-compose.yml
+curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/portainer/docker-compose.yml -o docker-compose.yml
 docker-compose up -d
 ```
 
