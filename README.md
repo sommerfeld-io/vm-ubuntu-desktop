@@ -21,7 +21,7 @@ A prerequisite is that the VM has internet access and `curl` installed.
 
 - Run Bootstrap script:
     ```bash
-    sudo curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/provision/bootstrap.sh | bash -
+    sudo curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/provision/bootstrap.sh | bash -
     ```
 - Git might still need some configuration - e.g. `git config --global user.email sebastian@sommerfeld.io` and `git config --global user.name sebastian`.
 - Configure public key on GitHub to allow cloning repositories, pulling and pushing via ssh.
@@ -37,6 +37,14 @@ To test the provisioning scripts locally, you can use Vagrant. The `Vagrantfile`
     ```bash
     sudo usermod -aG docker "$USER"
     ```
+
+## Download `docker-compose.yml` and start Portainer
+To start Portainer, download the `docker-compose.yml` file and start the service. The portainer password is written from the `docker-compose.yml` file to the local filesystem when starting the stack. The password is stored in the textfile `portainer.passwd`.
+
+```bash
+curl -o docker-compose.yml curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/portainer/docker-compose.yml
+docker-compose up -d
+```
 
 ## Contact
 Feel free to contact me via <sebastian@sommerfeld.io> or [raise an issue in this repository][file-issues].
