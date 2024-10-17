@@ -9,7 +9,8 @@
 
 		".vscode",
 
-		"provision",
+		"components/portainer",
+		"components/provision",
 
 		"docs",
 		"docs/about",

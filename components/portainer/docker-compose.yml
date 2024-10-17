@@ -1,0 +1,41 @@
+---
+services:
+
+  passwd:
+    image: alpine:3.20.3
+    volumes: &volumes
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - .:/workspaces/vm-ubuntu
+    working_dir: /workspaces/vm-ubuntu
+    command:
+      - /bin/ash
+      - -c
+      - |
+        echo "7gey2brcpvwt7d4m" > portainer.passwd
+    tty: &tty true
+
+  portainer:
+    image: portainer/portainer-ce:2.20.3-alpine
+    command: --host unix:///var/run/docker.sock --admin-password-file /tmp/portainer_passwords
+    restart: always
+    ports:
+      - 8990:9000
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer.passwd:/tmp/portainer_passwords
+      - portainer_data:/data
+    healthcheck:
+      test: "wget --no-verbose --tries=1 --spider http://localhost:9000 || exit 1"
+      interval: 10s
+      timeout: 10s
+      retries: 6
+      start_period: 10s
+    depends_on:
+      passwd:
+        condition: service_completed_successfully
+
+volumes:
+  portainer_data:
