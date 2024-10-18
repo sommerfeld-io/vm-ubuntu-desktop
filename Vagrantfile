@@ -14,8 +14,22 @@ Vagrant.configure("2") do |config|
     v.name = VM_HOSTNAME
   end
 
+  # Todo ... Somehow allow the dashboard to be accessed from the host machine without knowing the IP address
+  config.vm.network "private_network", ip: "192.168.56.10"
+
   config.vm.provision "shell", path: "components/provision/bootstrap.sh"
   config.vm.provision "shell", path: "components/provision/vagrant-user.sh", privileged: false
+  config.vm.provision "shell", path: "components/provision/clone.sh", privileged: false
 
-  config.vm.network "forwarded_port", guest: 8990, host: 8990
+  # Portainer
+  config.vm.network "forwarded_port", guest: 7990, host: 7990
+
+  # Minikube dashboard
+  # Todo ... Somehow allow the dashboard to be accessed from the host machine without pinning the port
+  config.vm.network "forwarded_port", guest: 7991, host: 7991
+
+  # minikube port range
+  (7000..7080).each do |port|
+    config.vm.network "forwarded_port", guest: port, host: port
+  end
 end

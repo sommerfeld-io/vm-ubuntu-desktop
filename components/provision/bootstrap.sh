@@ -1,4 +1,10 @@
 #!/bin/bash
+# @file bootstrap.sh
+# @brief Bootstrap script to provision the Vagrantbox and to install into non-virtual Ubuntu systems.
+# @description
+#   This script is used to provision the Vagrantbox and to install into non-virtual Ubuntu systems.
+#   It installs some basic packages and tools, docker, minikube and helm.
+
 # shellcheck disable=SC1091
 
 set -o errexit
@@ -7,31 +13,15 @@ set -o nounset
 # set -o xtrace
 
 
-function caption() {
-  if [[ -z "${1:-}" ]]; then
-    echo "[ERROR] ------------------------------------------------------------------------------"
-    echo "[ERROR] No parameter passed to caption function"
-    echo "[ERROR] ------------------------------------------------------------------------------"
-  exit 1
-  fi
-
-  echo "[INFO] -------------------------------------------------------------------------------"
-  echo "[INFO] $1"
-  echo "[INFO] -------------------------------------------------------------------------------"
-}
-
-
-caption "Info"
+echo "[INFO] Info"
 echo "User     = $USER"
 echo "Hostname = $HOSTNAME"
-echo "Home dr  = $HOME"
+echo "Home dir = $HOME"
 
 
-caption "Update apt cache"
+echo "[INFO] Install packages and tools"
+
 sudo apt-get update
-
-
-caption "Install packages and tools"
 sudo apt-get install -y ca-certificates \
   curl \
   gnupg \
@@ -47,7 +37,8 @@ sudo apt-get install -y ca-certificates \
 sudo snap install --classic code
 
 
-caption "Install docker"
+echo "[INFO] Install Docker"
+
 sudo apt-get update
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
@@ -75,20 +66,49 @@ fi
 sudo usermod -aG docker "$USER"
 newgrp docker
 
-caption "Cleanup apt"
+
+echo "[INFO] Install minikube"
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+rm minikube-linux-amd64
+
+
+echo "[INFO] Install helm"
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+rm get_helm.sh
+
+
+echo "[INFO] Clean up"
 sudo apt-get clean
 rm -rf /var/lib/apt/lists/*
 
-caption "Docker version"
+
+
+echo "[INFO] Docker version"
 docker version
 docker compose version
 
-caption "Test docker"
+
+echo "[INFO] Test docker"
 docker run --rm hello-world:latest
 
-caption "Git version"
+
+echo "[INFO] Git version"
 git --version
 
-caption "Manual leftovers"
+
+echo "[INFO] Minukube version"
+minikube version
+
+
+echo "[INFO] Helm version"
+helm version
+
+
+echo "[INFO] Manual leftovers"
 echo "[INFO] Maybe you still need to add the user to the docker group"
 echo "[INFO]   -->  sudo usermod -aG docker \$USER"
