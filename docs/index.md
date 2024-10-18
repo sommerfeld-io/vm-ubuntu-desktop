@@ -95,9 +95,7 @@ minikube service list # --namespace apps
 ```
 
 ### Interact with minikube which runs inside a Vagrantbox
-When running minikube inside a Vagrantbox, keep in mind, that the hosts browser does not point to the VM when requesting e.g. the dashboard from `127.0.0.1`. Remember to replace this IP with the Vagrantbox IP address.
-
-Additionally, minikube binds itself to `127.0.0.1`, so requests from the host to the VM are not possible unless the `apiserver.bind-address` is changed.
+minikube binds itself to `127.0.0.1` (which represents the localhost from inside the Vagrantbox, not from the host). Requests from the host to the VM are not possible unless the `apiserver.bind-address` is changed.
 
 Make sure the Vagrantbox forwards all needed ports to the host.
 
@@ -105,9 +103,17 @@ Make sure the Vagrantbox forwards all needed ports to the host.
 # Startup inside Vagrantbox
 minikube start --extra-config=apiserver.service-node-port-range=7000-7080 --extra-config=apiserver.bind-address=0.0.0.0
 
-# Expose the minikube dashboard on dedicated port and without opening the browser
+# Expose the minikube dashboard on specified port and without opening the browser
 minikube dashboard --port 7000 --url
 ```
+
+Since the dashboard (despite setting the bind address) still only answers to requests from inside the Vagrantbox, you need an SSH tunnel to the dashboard inside the Vagrantbox.
+
+```bash
+vagrant ssh -- -L 7999:localhost:7000
+```
+
+`7999` is the port on the host which tunnels to `localhost:7000` inside the Vagrantbox. The port on the host must be a free port, so it cannot be part of the NodePort range.
 
 ### Increasing the NodePort range
 By default, minikube exposes ports `30000-32767`. If this does not work for you, you can adjust the range by using: `minikube start --extra-config=apiserver.service-node-port-range=1024-65535`
