@@ -69,11 +69,13 @@ helm version
 # Help
 minikube
 
-# Startup with addons
-minikube start --extra-config=apiserver.service-node-port-range=7000-7080
-minikube addons enable metrics-server
-minikube addons enable dashboard
-minikube addons enable ingress
+# Startup
+minikube start
+
+# Startup inside Vagrantbox
+# The hosts browser does not point to the VM when requesting e.g. the dashboard from 127.0.0.1
+# Remember to replace 127.0.0.1 with the Vagrantbox IP address
+minikube start --extra-config=apiserver.service-node-port-range=7000-7080 --extra-config=apiserver.bind-address=0.0.0.0
 
 # Shutdown
 minikube stop
@@ -81,8 +83,13 @@ minikube stop
 # Destroy
 minikube delete
 
+# Enable addons
+minikube addons enable metrics-server
+minikube addons enable dashboard
+minikube addons enable ingress
+
 # Expose the minikube dashboard
-minikube dashboard --port 7991 --url
+minikube dashboard --port 7000 --url
 
 # List pods from all namespaces
 kubectl -- get po -A
