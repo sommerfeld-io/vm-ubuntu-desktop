@@ -11,6 +11,8 @@
 
 		"components/portainer",
 		"components/provision",
+		"components/k8s/argocd",
+		"components/k8s/manifests",
 
 		"docs",
 		"docs/about",

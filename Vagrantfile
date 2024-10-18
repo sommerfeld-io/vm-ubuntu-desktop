@@ -16,6 +16,13 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", path: "components/provision/bootstrap.sh"
   config.vm.provision "shell", path: "components/provision/vagrant-user.sh", privileged: false
+  config.vm.provision "shell", path: "components/provision/clone.sh", privileged: false
 
-  config.vm.network "forwarded_port", guest: 8990, host: 8990
+  # Portainer
+  config.vm.network "forwarded_port", guest: 7990, host: 7990
+
+  # minikube port range
+  (7000..7080).each do |port|
+    config.vm.network "forwarded_port", guest: port, host: port
+  end
 end
