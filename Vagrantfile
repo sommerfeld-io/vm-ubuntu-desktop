@@ -14,9 +14,6 @@ Vagrant.configure("2") do |config|
     v.name = VM_HOSTNAME
   end
 
-  # Todo ... Somehow allow the dashboard to be accessed from the host machine without knowing the IP address
-  config.vm.network "private_network", ip: "192.168.56.10"
-
   config.vm.provision "shell", path: "components/provision/bootstrap.sh"
   config.vm.provision "shell", path: "components/provision/vagrant-user.sh", privileged: false
   config.vm.provision "shell", path: "components/provision/clone.sh", privileged: false
