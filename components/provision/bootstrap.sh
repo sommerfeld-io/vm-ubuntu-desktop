@@ -13,11 +13,12 @@ set -o nounset
 # set -o xtrace
 
 
-echo "[INFO] Info"
+echo "[INFO] ========================================================"
 echo "User     = $USER"
 echo "Hostname = $HOSTNAME"
 echo "Home dir = $HOME"
 hostnamectl
+echo "[INFO] ========================================================"
 
 
 echo "[INFO] Install packages and tools"
@@ -122,8 +123,8 @@ done
 
 
 echo "[INFO] Download minikube scripts from repository"
-curl -fsSL -o /opt/vm-ubuntu/minikube/start.sh https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/services/minikube/start.sh
-chmod ugo+rwx /opt/vm-ubuntu/minikube/start.sh
+curl -fsSL -o /opt/vm-ubuntu/minikube-start.sh https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/k8s/minikube-start.sh
+chmod ugo+rwx /opt/vm-ubuntu/minikube-start.sh
 
 echo "[INFO] Download Docker Compose config for Portainer from repository"
 curl -fsSL -o /opt/vm-ubuntu/portainer/docker-compose.yml https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/portainer/docker-compose.yml

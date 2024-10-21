@@ -16,6 +16,7 @@ readonly OPTION_DELETE="remove"
 select o in "$OPTION_START" "$OPTION_SSH" "$OPTION_STOP" "$OPTION_DELETE"; do
     case "$o" in
         "$OPTION_START" )
+            vagrant validate
             vagrant up
             break;;
         "$OPTION_SSH" )

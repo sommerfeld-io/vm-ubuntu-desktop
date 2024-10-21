@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file start.sh
+# @file minikube-start.sh
 # @brief Start minikube and enable addons.
 # @description
 #   This script starts minikube and enables the addons metrics-server, dashboard and ingress. The
@@ -12,10 +12,10 @@ set -o nounset
 # set -o xtrace
 
 
+echo "[INFO] ========================================================"
 echo "[INFO] Running as user $USER"
 hostnamectl
-
-echo "[INFO] ========================================================"
+echo "[INFO]"
 echo "[INFO] Documentation website:"
 echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
 echo "[INFO] ========================================================"
@@ -27,11 +27,11 @@ fi
 readonly IS_VAGRANT
 
 
+echo "[INFO] Start minikube"
 if [ "$IS_VAGRANT" = true ]; then
-  echo "[INFO] Start minikube in Vagrantbox"
+  echo "[INFO] with additional configuration for Vagrantbox"
   minikube start --extra-config=apiserver.service-node-port-range=7000-7080 --extra-config=apiserver.bind-address=0.0.0.0
 else
-  echo "[INFO] Start minikube"
   minikube start
 fi
 
@@ -40,11 +40,15 @@ minikube addons enable metrics-server
 minikube addons enable dashboard
 minikube addons enable ingress
 
+echo "[INFO] Start dashboard"
 if [ "$IS_VAGRANT" == true ]; then
-  echo "[INFO] Start dashboard with fixed port"
-  echo "[INFO] Remember to establish an SSH tunnel before accessing the dashboard through the browser"
+  echo "[INFO] ========================================================"
+  echo "[INFO] Remember to establish an SSH tunnel before accessing the"
+  echo "[INFO] dashboard through the browser"
+  echo "[INFO]   vagrant ssh -- -L 7999:localhost:7999"
+  echo "[INFO] ========================================================"
+
   minikube dashboard --port 7999 --url
 else
-  echo "[INFO] Start dashboard"
   minikube dashboard
 fi

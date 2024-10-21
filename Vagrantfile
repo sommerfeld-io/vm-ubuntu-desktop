@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "components/provision/bootstrap.sh"
   config.vm.provision "shell", path: "components/provision/bootstrap-vagrant.sh", privileged: false
 
-  config.vm.provision "file", source: "components/services/minikube/start.sh", destination: "/opt/vm-ubuntu/minikube/start.sh"
+  config.vm.provision "file", source: "components/k8s/minikube-start.sh", destination: "/opt/vm-ubuntu/minikube-start.sh"
 
   # Portainer
   config.vm.network "forwarded_port", guest: 7990, host: 7990
