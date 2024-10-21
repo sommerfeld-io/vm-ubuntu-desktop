@@ -113,7 +113,7 @@ helm version
 
 echo "[INFO] Setup folders"
 readonly folders=(
-  '/opt/vm-ubuntu/minikube'
+  '/opt/vm-ubuntu'
   '/opt/vm-ubuntu/portainer'
 )
 for f in "${folders[@]}"; do
