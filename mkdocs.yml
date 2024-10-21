@@ -1,9 +1,9 @@
 ---
-site_name: Ubuntu Desktop Virtual Machine
+site_name: Ubuntu Virtual Machine
 site_url: https://www.sommerfeld.io
 site_author: Sebastian Sommerfeld
 site_description: >-
-  Ubuntu Desktop Virtual Machine for sommerfeld.io projects.
+  Ubuntu Virtual Machine for sommerfeld.io projects.
 
 repo_name: sommerfeld-io/vm-ubuntu
 repo_url: https://github.com/sommerfeld-io/vm-ubuntu

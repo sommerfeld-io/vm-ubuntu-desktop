@@ -1,4 +1,4 @@
-# Ubuntu Desktop Virtual Machine
+# Ubuntu Virtual Machine
 [doc-website]: https://sommerfeld-io.github.io/vm-ubuntu
 [github-repo]: https://github.com/sommerfeld-io/vm-ubuntu
 [file-issues]: https://github.com/sommerfeld-io/vm-ubuntu/issues
