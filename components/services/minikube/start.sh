@@ -3,7 +3,7 @@
 # @brief Start minikube and enable addons.
 # @description
 #   This script starts minikube and enables the addons metrics-server, dashboard and ingress. The
-#   script starts minikube differently dependng on whether it is running in a Vagrantbox or not.
+#   script starts minikube differently depending on whether it is running in a Vagrantbox or not.
 
 
 set -o errexit
@@ -15,6 +15,10 @@ set -o nounset
 echo "[INFO] Running as user $USER"
 hostnamectl
 
+echo "[INFO] ========================================================"
+echo "[INFO] Documentation website:"
+echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
+echo "[INFO] ========================================================"
 
 IS_VAGRANT=false
 if [ "$USER" = "vagrant" ]; then

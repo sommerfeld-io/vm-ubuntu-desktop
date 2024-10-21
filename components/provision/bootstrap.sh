@@ -113,6 +113,7 @@ helm version
 echo "[INFO] Setup folders"
 readonly folders=(
   '/opt/vm-ubuntu/minikube'
+  '/opt/vm-ubuntu/portainer'
 )
 for f in "${folders[@]}"; do
   mkdir -p "$f"
@@ -124,6 +125,13 @@ echo "[INFO] Download minikube scripts from repository"
 curl -fsSL -o /opt/vm-ubuntu/minikube/start.sh https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/services/minikube/start.sh
 chmod ugo+rwx /opt/vm-ubuntu/minikube/start.sh
 
-echo "[INFO] Manual leftovers"
+echo "[INFO] Download Docker Compose config for Portainer from repository"
+curl -fsSL -o /opt/vm-ubuntu/portainer/docker-compose.yml https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/portainer/docker-compose.yml
+
+echo "[INFO] ========================================================"
 echo "[INFO] Maybe you still need to add the user to the docker group"
-echo "[INFO]   -->  sudo usermod -aG docker \$USER"
+echo "[INFO]   sudo usermod -aG docker \$USER"
+echo "[INFO]"
+echo "[INFO] Documentation website: "
+echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
+echo "[INFO] ========================================================"
