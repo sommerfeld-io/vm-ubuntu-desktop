@@ -45,7 +45,11 @@ To test the provisioning scripts locally, you can use Vagrant. The `Vagrantfile`
     ```
 
 ## Run Portainer
-To start Portainer, download the `docker-compose.yml` file and start all services. The portainer password is written from the `docker-compose.yml` file to the local filesystem when starting the stack. The password is written into `portainer.passwd` next to the `docker-compose.yml`.
+The bootstrap script downloads the `components/portainer/docker-compose.yml` script from this repo into `/opt/vm-ubuntu/portainer/docker-compose.yml`.
+
+The portainer password is written from the `docker-compose.yml` file to the local filesystem when starting the stack. The password is written into `portainer.passwd` next to the `docker-compose.yml`.
+
+Alternatively, you can download the `docker-compose.yml` file manually and start all services.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/portainer/docker-compose.yml -o docker-compose.yml
@@ -65,7 +69,7 @@ minikube requires a virtualization software to run. The default hypervisor is `d
 minikube ships with a `kubectl` binary to interact with the minikube cluster. Keep in mind, that the bootstrap script creates a `kubectl` alias which points to `minikube kubectl` so this might conflict with other `kubectl` installations.
 
 ### Interact with minikube
-The bootstrap script downloads the `components/services/minikube/start.sh` script from this repo into `/opt/vm-ubuntu/minikube/start.sh`. The script is a utility to start minikube with some default settings.
+The bootstrap script downloads the `components/services/minikube/start.sh` script from this repo into `/opt/vm-ubuntu/minikube/start.sh`. The script is a utility to start minikube with some default settings  and starts minikube slightly different depending on whether it is running in a Vagrantbox or not.
 
 ```bash
 minikube version
