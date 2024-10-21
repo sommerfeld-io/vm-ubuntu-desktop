@@ -65,6 +65,8 @@ minikube requires a virtualization software to run. The default hypervisor is `d
 minikube ships with a `kubectl` binary to interact with the minikube cluster. Keep in mind, that the bootstrap script creates a `kubectl` alias which points to `minikube kubectl` so this might conflict with other `kubectl` installations.
 
 ### Interact with minikube
+The bootstrap script downloads the `components/services/minikube/start.sh` script from this repo into `/opt/vm-ubuntu/minikube/start.sh`. The script is a utility to start minikube with some default settings.
+
 ```bash
 minikube version
 minikube status
@@ -104,16 +106,16 @@ Make sure the Vagrantbox forwards all needed ports to the host.
 minikube start --extra-config=apiserver.service-node-port-range=7000-7080 --extra-config=apiserver.bind-address=0.0.0.0
 
 # Expose the minikube dashboard on specified port and without opening the browser
-minikube dashboard --port 7000 --url
+minikube dashboard --port 7999 --url
 ```
 
 Since the dashboard (despite setting the bind address) still only answers to requests from inside the Vagrantbox, you need an SSH tunnel to the dashboard inside the Vagrantbox.
 
 ```bash
-vagrant ssh -- -L 7999:localhost:7000
+vagrant ssh -- -L 7999:localhost:7999
 ```
 
-`7999` is the port on the host which tunnels to `localhost:7000` inside the Vagrantbox. The port on the host must be a free port, so it cannot be part of the NodePort range.
+`7999` is the port on the host which tunnels to `localhost:7999` inside the Vagrantbox. The port on the host must be a free port, so it cannot be part of the NodePort range.
 
 ### Increasing the NodePort range
 By default, minikube exposes ports `30000-32767`. If this does not work for you, you can adjust the range by using: `minikube start --extra-config=apiserver.service-node-port-range=1024-65535`

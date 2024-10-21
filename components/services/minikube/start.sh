@@ -39,7 +39,7 @@ minikube addons enable ingress
 if [ "$IS_VAGRANT" == true ]; then
   echo "[INFO] Start dashboard with fixed port"
   echo "[INFO] Remember to establish an SSH tunnel before accessing the dashboard through the browser"
-  minikube dashboard --port 7000 --url
+  minikube dashboard --port 7999 --url
 else
   echo "[INFO] Start dashboard"
   minikube dashboard
