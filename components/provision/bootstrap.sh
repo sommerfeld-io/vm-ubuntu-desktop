@@ -20,16 +20,6 @@ echo "Home dir = $HOME"
 hostnamectl
 
 
-echo "[INFO] Setup folders"
-readonly folders=(
-  '/opt/vm-ubuntu/minikube'
-)
-for f in "${folders[@]}"; do
-  mkdir -p "$f"
-  chmod ugo+rwx "$f"
-done
-
-
 echo "[INFO] Install packages and tools"
 
 sudo apt-get update
@@ -119,6 +109,20 @@ minikube version
 echo "[INFO] Helm version"
 helm version
 
+
+echo "[INFO] Setup folders"
+readonly folders=(
+  '/opt/vm-ubuntu/minikube'
+)
+for f in "${folders[@]}"; do
+  mkdir -p "$f"
+  chmod ugo+rwx "$f"
+done
+
+
+echo "[INFO] Download minikube scripts from repository"
+curl -fsSL -o /opt/vm-ubuntu/minikube/start.sh https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/services/minikube/start.sh
+chmod ugo+rwx /opt/vm-ubuntu/minikube/start.sh
 
 echo "[INFO] Manual leftovers"
 echo "[INFO] Maybe you still need to add the user to the docker group"

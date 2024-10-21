@@ -1,8 +1,9 @@
 #!/bin/bash
 # @file start.sh
-# @brief ..
+# @brief Start minikube and enable addons.
 # @description
-#   ..
+#   This script starts minikube and enables the addons metrics-server, dashboard and ingress. The
+#   script starts minikube differently dependng on whether it is running in a Vagrantbox or not.
 
 
 set -o errexit
