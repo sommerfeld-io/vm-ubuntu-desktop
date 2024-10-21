@@ -1,8 +1,8 @@
 # Ubuntu Desktop Virtual Machine
-[doc-website]: https://sommerfeld-io.github.io/vm-ubuntu-desktop
-[github-repo]: https://github.com/sommerfeld-io/vm-ubuntu-desktop
-[file-issues]: https://github.com/sommerfeld-io/vm-ubuntu-desktop/issues
-[project-board]: https://github.com/orgs/sommerfeld-io/projects/1/views/1?sliceBy%5Bvalue%5D=sommerfeld-io%2Fvm-ubuntu-desktop
+[doc-website]: https://sommerfeld-io.github.io/vm-ubuntu
+[github-repo]: https://github.com/sommerfeld-io/vm-ubuntu
+[file-issues]: https://github.com/sommerfeld-io/vm-ubuntu/issues
+[project-board]: https://github.com/orgs/sommerfeld-io/projects/1/views/1?sliceBy%5Bvalue%5D=sommerfeld-io%2Fvm-ubuntu
 
 This project is a collection of scripts and configuration files to setup a Ubuntu Desktop VM.
 
@@ -23,11 +23,11 @@ A prerequisite is that the VM has internet access and `curl` installed.
 
 - Run Bootstrap script:
     ```bash
-    sudo curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/provision/bootstrap.sh | bash -
+    sudo curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/provision/bootstrap.sh | bash -
     ```
 - Clone this repository from GitHub into `~/work/repos`:
     ```bash
-    curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/provision/clone.sh
+    curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/provision/clone.sh
     ```
 - Git might still need some configuration - e.g. `git config --global user.email sebastian@sommerfeld.io` and `git config --global user.name sebastian`.
 - Configure public key on GitHub to allow cloning repositories, pulling and pushing via ssh.
@@ -48,7 +48,7 @@ To test the provisioning scripts locally, you can use Vagrant. The `Vagrantfile`
 To start Portainer, download the `docker-compose.yml` file and start all services. The portainer password is written from the `docker-compose.yml` file to the local filesystem when starting the stack. The password is written into `portainer.passwd` next to the `docker-compose.yml`.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu-desktop/refs/heads/main/components/portainer/docker-compose.yml -o docker-compose.yml
+curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/portainer/docker-compose.yml -o docker-compose.yml
 docker-compose up -d
 ```
 

@@ -13,6 +13,8 @@
 		"components/provision",
 		"components/k8s/argocd",
 		"components/k8s/manifests",
+		"components/services",
+		"components/services/minikube",
 
 		"docs",
 		"docs/about",

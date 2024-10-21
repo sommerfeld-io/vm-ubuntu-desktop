@@ -8,7 +8,7 @@ on:
 env:
   IMAGE_TAG_RC: rc
   IMAGE_TAG_LATEST: latest
-  IMAGE_NAME: vm-ubuntu-desktop
+  IMAGE_NAME: vm-ubuntu
   DOCS_PAGES_ARTIFACT: docs-page
 
 jobs:

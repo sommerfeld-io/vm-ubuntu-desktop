@@ -17,8 +17,8 @@ services:
     volumes: &volumes
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-      - project-root-volume:/workspaces/vm-ubuntu-desktop
-    working_dir: &default-workdir /workspaces/vm-ubuntu-desktop
+      - project-root-volume:/workspaces/vm-ubuntu
+    working_dir: &default-workdir /workspaces/vm-ubuntu
     command: |
       rm -rf target
       rm -rf target/docs/site

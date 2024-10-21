@@ -5,8 +5,8 @@ site_author: Sebastian Sommerfeld
 site_description: >-
   Ubuntu Desktop Virtual Machine for sommerfeld.io projects.
 
-repo_name: sommerfeld-io/vm-ubuntu-desktop
-repo_url: https://github.com/sommerfeld-io/vm-ubuntu-desktop
+repo_name: sommerfeld-io/vm-ubuntu
+repo_url: https://github.com/sommerfeld-io/vm-ubuntu
 
 copyright: Copyright &copy; 2024 Sommerfeld.io
 
@@ -45,7 +45,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/sommerfeld-io/vm-ubuntu-desktop
+      link: https://github.com/sommerfeld-io/vm-ubuntu
 
 nav:
   - Getting Started: index.md

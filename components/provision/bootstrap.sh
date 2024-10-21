@@ -17,6 +17,17 @@ echo "[INFO] Info"
 echo "User     = $USER"
 echo "Hostname = $HOSTNAME"
 echo "Home dir = $HOME"
+hostnamectl
+
+
+echo "[INFO] Setup folders"
+readonly folders=(
+  '/opt/vm-ubuntu/minikube'
+)
+for f in "${folders[@]}"; do
+  mkdir -p "$f"
+  chmod ugo+rwx "$f"
+done
 
 
 echo "[INFO] Install packages and tools"

@@ -19,7 +19,7 @@ on:
 env:
   IMAGE_TAG_RC: rc
   IMAGE_TAG_LATEST: latest
-  IMAGE_NAME: vm-ubuntu-desktop
+  IMAGE_NAME: vm-ubuntu
   CONTEXT: .
   DOCKERFILE: Dockerfile
   REGISTRY: docker.io
@@ -89,11 +89,11 @@ jobs:
             content=$(cat "$file")
 
             old="(usage/index.md)"
-            new="(https://sommerfeld-io.github.io/vm-ubuntu-desktop/usage)"
+            new="(https://sommerfeld-io.github.io/vm-ubuntu/usage)"
             content="${content//$old/$new}"
 
             old="(about/development-guide.md)"
-            new="(https://sommerfeld-io.github.io/vm-ubuntu-desktop/about/development-guide)"
+            new="(https://sommerfeld-io.github.io/vm-ubuntu/about/development-guide)"
             content="${content//$old/$new}"
 
             echo "$content" > "$file"
