@@ -17,7 +17,6 @@ hostnamectl
 
 IS_VAGRANT=false
 if [ "$USER" = "vagrant" ]; then
-  newgrp docker
   IS_VAGRANT=true
 fi
 readonly IS_VAGRANT
