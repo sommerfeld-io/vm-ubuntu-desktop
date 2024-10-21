@@ -25,12 +25,8 @@ A prerequisite is that the VM has internet access and `curl` installed.
     ```bash
     sudo curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/provision/bootstrap.sh | bash -
     ```
-- Clone this repository from GitHub into `~/work/repos`:
-    ```bash
-    curl -fsSL https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/provision/clone.sh
-    ```
 - Git might still need some configuration - e.g. `git config --global user.email sebastian@sommerfeld.io` and `git config --global user.name sebastian`.
-- Configure public key on GitHub to allow cloning repositories, pulling and pushing via ssh.
+- d.+: Configure public key on GitHub to allow cloning repositories, pulling and pushing via ssh.
 - Maybe you still need to add your user from inside the VM to the docker group
     ```bash
     sudo usermod -aG docker "$USER"
@@ -69,7 +65,7 @@ minikube requires a virtualization software to run. The default hypervisor is `d
 minikube ships with a `kubectl` binary to interact with the minikube cluster. Keep in mind, that the bootstrap script creates a `kubectl` alias which points to `minikube kubectl` so this might conflict with other `kubectl` installations.
 
 ### Interact with minikube
-The bootstrap script downloads the `components/services/minikube/start.sh` script from this repo into `/opt/vm-ubuntu/minikube/start.sh`. The script is a utility to start minikube with some default settings  and starts minikube slightly different depending on whether it is running in a Vagrantbox or not.
+The bootstrap script downloads the `components/k8s/minikube-start.sh` script from this repo into `/opt/vm-ubuntu/minikube-start.sh`. The script is a utility to start minikube with some default settings  and starts minikube slightly different depending on whether it is running in a Vagrantbox or not.
 
 ```bash
 minikube version
