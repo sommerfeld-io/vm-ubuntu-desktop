@@ -27,6 +27,7 @@ control 'packages-01' do
         'docker-compose-plugin'
         'minikube'
         'helm'
+        'inspec'
     )
     PACKAGES.each do |p|
         describe package(p) do

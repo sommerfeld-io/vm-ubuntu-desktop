@@ -21,7 +21,7 @@ echo "[INFO] Running as user $USER"
 hostnamectl
 echo "[INFO] ========================================================"
 echo "[INFO] Inspec version"
-docker run -it --rm "chef/inspec:$TAG" --version
+inspec --version
 echo "[INFO] ========================================================"
 echo "[INFO] Documentation"
 echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
@@ -29,15 +29,7 @@ echo "[INFO] ========================================================"
 
 
 echo "[INFO] Validate profile $PROFILE"
-docker run -it --rm \
-    --user "$(id -u):$(id -g)" \
-    --volume "$(pwd):$(pwd)" \
-    --workdir "$(pwd)" \
-    "chef/inspec:$TAG" check "$PROFILE" --chef-license=accept-no-persist
+inspec check "$PROFILE" --chef-license=accept-no-persist
 
 echo "[INFO] Run profile $PROFILE"
-docker run -it --rm \
-    --user "$(id -u):$(id -g)" \
-    --volume "$(pwd):$(pwd)" \
-    --workdir "$(pwd)" \
-    "chef/inspec:$TAG" exec "$PROFILE" --chef-license=accept-no-persist
+inspec exec "$PROFILE" --chef-license=accept-no-persist

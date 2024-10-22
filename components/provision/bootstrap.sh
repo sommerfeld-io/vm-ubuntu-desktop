@@ -85,6 +85,14 @@ chmod 700 get_helm.sh
 rm get_helm.sh
 
 
+echo "[INFO] Install Inspec"
+readonly INSPEC_VERSION="5.22.36"
+curl -o inspec.deb "https://packages.chef.io/files/stable/inspec/$INSPEC_VERSION/ubuntu/20.04/inspec_$INSPEC_VERSION-1_amd64.deb"
+sudo dpkg -i inspec.deb
+rm inspec.dev
+sudo apt-get install -y -f
+
+
 echo "[INFO] Clean up"
 sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
