@@ -2,7 +2,7 @@ title "/opt/vm-ubuntu checks"
 
 control "opt-01" do
     impact 0.7
-    title "Check files"
+    title "Files should exist and should have correct permissions"
     desc "Check if files exist and have the correct permissions."
 
     FILES = %w(
