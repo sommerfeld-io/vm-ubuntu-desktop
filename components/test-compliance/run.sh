@@ -12,9 +12,6 @@ set -o nounset
 # set -o xtrace
 
 
-readonly PROFILE="vm-ubuntu"
-
-
 echo "[INFO] ========================================================"
 echo "[INFO] Running as user $USER"
 hostnamectl
@@ -27,8 +24,14 @@ echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
 echo "[INFO] ========================================================"
 
 
-echo "[INFO] Validate profile $PROFILE"
-inspec check "$PROFILE" --chef-license=accept-no-persist
+PROFILES=(
+  'vm-ubuntu'
+  'https://github.com/dev-sec/linux-baseline'
+)
+for profile in "${PROFILES[@]}"; do
+  echo "[INFO] Validate profile $profile"
+  inspec check "$profile" --chef-license=accept-no-persist
 
-echo "[INFO] Run profile $PROFILE"
-inspec exec "$PROFILE" --chef-license=accept-no-persist
+  echo "[INFO] Run profile $profile"
+  inspec exec "$profile" --chef-license=accept-no-persist
+done
