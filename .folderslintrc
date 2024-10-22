@@ -15,6 +15,7 @@
 		"components/k8s/manifests",
 		"components/services",
 		"components/services/minikube",
+		"components/test-compliance/*/controls",
 
 		"docs",
 		"docs/about",

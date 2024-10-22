@@ -12,7 +12,6 @@ set -o nounset
 # set -o xtrace
 
 
-readonly TAG="5.22.36"
 readonly PROFILE="vm-ubuntu"
 
 
