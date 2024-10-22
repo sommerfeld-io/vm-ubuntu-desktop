@@ -26,12 +26,44 @@ control 'packages-01' do
         'docker-buildx-plugin'
         'docker-compose-plugin'
         'minikube'
-        'helm'
         'inspec'
     )
     PACKAGES.each do |p|
         describe package(p) do
             it { should be_installed }
+        end
+    end
+end
+
+control 'packages-02' do
+    impact 0.5
+    title 'Snap packages should be installed'
+    desc 'Snap packages should be installed'
+
+    describe file('/snap/bin/code') do
+        it { should exist }
+        it { should be_file }
+        it { should_not be_directory }
+        it { should be_executable }
+    end
+end
+
+control 'packages-03' do
+    impact 1.0
+    title 'Binary commands should be installed'
+    desc 'Software packages run from binary commands should be installed'
+
+    COMMANDS = %w(
+        '/usr/local/bin/helm'
+        '/usr/local/bin/minikube'
+    )
+    COMMANDS.each do |c|
+        describe package(c) do
+            it { should exist }
+            it { should be_file }
+            it { should_not be_directory }
+            it { should be_readable }
+            it { should be_executable }
         end
     end
 end
