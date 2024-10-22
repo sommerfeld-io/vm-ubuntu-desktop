@@ -69,3 +69,20 @@ control 'packages-03' do
         end
     end
 end
+
+control 'packages-99' do
+    impact 1.0
+    title 'No installation artifacts should remain on the system'
+    desc 'All downloads and scripts and other artifacts should be removed'
+
+    ARTIFACT = %w(
+        /tmp/minikube-linux-amd64
+        /tmp/get_helm.sh
+        /tmp/inspec.deb
+    )
+    ARTIFACT.each do |a|
+        describe file(a) do
+            it { should_not exist }
+        end
+    end
+end

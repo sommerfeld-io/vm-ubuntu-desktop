@@ -72,24 +72,24 @@ newgrp docker
 
 echo "[INFO] Install minikube"
 
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube
-rm minikube-linux-amd64
+curl -L -o /tmp/minikube-linux-amd64 https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install /tmp/minikube-linux-amd64 /usr/local/bin/minikube
+rm /tmp/minikube-linux-amd64
 
 
 echo "[INFO] Install helm"
 
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
-rm get_helm.sh
+curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 /tmp/get_helm.sh
+/tmp/get_helm.sh
+rm /tmp/get_helm.sh
 
 
 echo "[INFO] Install Inspec"
 readonly INSPEC_VERSION="5.22.36"
-curl -o inspec.deb "https://packages.chef.io/files/stable/inspec/$INSPEC_VERSION/ubuntu/20.04/inspec_$INSPEC_VERSION-1_amd64.deb"
-sudo dpkg -i inspec.deb
-rm inspec.dev
+curl -o /tmp/inspec.deb "https://packages.chef.io/files/stable/inspec/$INSPEC_VERSION/ubuntu/20.04/inspec_$INSPEC_VERSION-1_amd64.deb"
+sudo dpkg -i /tmp/inspec.deb
+rm /tmp/inspec.deb
 sudo apt-get install -y -f
 
 
