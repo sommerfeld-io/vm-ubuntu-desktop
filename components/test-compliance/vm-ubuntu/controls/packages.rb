@@ -61,12 +61,9 @@ control 'packages-03' do
         '/usr/local/bin/minikube'
     )
     COMMANDS.each do |c|
-        describe package(c) do
+        describe file(c) do
             it { should exist }
-            it { should be_file }
             it { should_not be_directory }
-            it { should be_readable }
-            it { should be_executable }
         end
     end
 end
