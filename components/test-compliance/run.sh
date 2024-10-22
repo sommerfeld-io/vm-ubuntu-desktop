@@ -12,19 +12,20 @@ set -o nounset
 # set -o xtrace
 
 
+readonly TAG="5.22.36"
+readonly PROFILE="vm-ubuntu"
+
+
 echo "[INFO] ========================================================"
 echo "[INFO] Running as user $USER"
 hostnamectl
 echo "[INFO] ========================================================"
 echo "[INFO] Inspec version"
-docker run -it --rm chef/inspec:5.22.58 --version
+docker run -it --rm "chef/inspec:$TAG" --version
 echo "[INFO] ========================================================"
 echo "[INFO] Documentation"
 echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
 echo "[INFO] ========================================================"
-
-
-readonly PROFILE="vm-ubuntu"
 
 
 echo "[INFO] Validate profile $PROFILE"
@@ -32,11 +33,11 @@ docker run -it --rm \
     --user "$(id -u):$(id -g)" \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
-    chef/inspec:5.22.58 check "$PROFILE" --chef-license=accept-no-persist
+    "chef/inspec:$TAG" check "$PROFILE" --chef-license=accept-no-persist
 
 echo "[INFO] Run profile $PROFILE"
 docker run -it --rm \
     --user "$(id -u):$(id -g)" \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
-    chef/inspec:5.22.58 exec "$PROFILE" --chef-license=accept-no-persist
+    "chef/inspec:$TAG" exec "$PROFILE" --chef-license=accept-no-persist

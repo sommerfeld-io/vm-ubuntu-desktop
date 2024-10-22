@@ -5,13 +5,13 @@ control "opt-01" do
     title "Scripts should exist and should have correct permissions"
     desc "Check if scripts exist and have the correct permissions."
 
-    FILES = %w(
+    SCRIPS = %w(
         '/opt/vm-ubuntu/minikube-startup.sh'
         '/opt/vm-ubuntu/minikube-shutdown.sh'
         '/opt/vm-ubuntu/minikube-delete.sh'
     )
-    FILES.each do |folder|
-        describe file(folder) do
+    SCRIPS.each do |s|
+        describe file(s) do
             it { should exist }
             it { should be_file }
             it { should_not be_directory }
@@ -32,8 +32,8 @@ control "opt-02" do
     FILES = %w(
         '/opt/vm-ubuntu/portainer/docker-compose.yml'
     )
-    FILES.each do |folder|
-        describe file(folder) do
+    FILES.each do |f|
+        describe file(f) do
             it { should exist }
             it { should be_file }
             it { should_not be_directory }
