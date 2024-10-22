@@ -124,8 +124,8 @@ done
 
 echo "[INFO] Download minikube scripts from repository"
 scripts=(
-  'minikube-start.sh'
-  'minikube-stop.sh'
+  'minikube-startup.sh'
+  'minikube-shutdown.sh'
   'minikube-delete.sh'
 )
 for s in "${scripts[@]}"; do

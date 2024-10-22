@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file minikube-start.sh
+# @file minikube-startup.sh
 # @brief Start minikube and enable addons.
 # @description
 #   This script starts minikube and enables the addons metrics-server, dashboard and ingress. The

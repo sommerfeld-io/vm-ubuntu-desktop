@@ -1,5 +1,5 @@
 #!/bin/bash
-# @file minikube-stop.sh
+# @file minikube-shutdown.sh
 # @brief Stop minikube.
 # @description
 #   This script shuts minikube down.
