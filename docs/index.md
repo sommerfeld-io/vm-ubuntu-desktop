@@ -121,7 +121,9 @@ vagrant ssh -- -L 7999:localhost:7999
 By default, minikube exposes ports `30000-32767`. If this does not work for you, you can adjust the range by using: `minikube start --extra-config=apiserver.service-node-port-range=1024-65535`
 
 ## Compliance Tests
-This repository provides a Chef InSpec profile designed to verify the installation of required packages, binaries, and software, ensuring that they are present and correctly installed. The profile checks for essential components, including package installations, the existence and permissions of binaries, and verifies the proper structure of the filesystem. Additionally, it ensures that utility scripts and configurations needed for Minikube are in place and functioning as expected.
+This repository provides a [Chef InSpec](https://docs.chef.io/inspec) profile designed to verify the installation of required packages, binaries, and software, ensuring that they are present and correctly installed. The profile checks for essential components, including package installations, the existence and permissions of binaries, and verifies the proper structure of the filesystem. Additionally, it ensures that utility scripts and configurations needed for Minikube are in place and functioning as expected.
+
+The InSpec binary is installed from the botstrap script.
 
 Invoke the test suite by cloning the repository and running `components/test-compliance/run.sh`.
 
