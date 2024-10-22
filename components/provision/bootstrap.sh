@@ -24,7 +24,8 @@ echo "[INFO] ========================================================"
 echo "[INFO] Install packages and tools"
 
 sudo apt-get update
-sudo apt-get install -y ca-certificates \
+sudo apt-get install -y apt-transport-https \
+  ca-certificates \
   curl \
   gnupg \
   lsb-release \
