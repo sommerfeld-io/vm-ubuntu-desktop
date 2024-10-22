@@ -27,14 +27,16 @@ echo "[INFO] ========================================================"
 readonly PROFILE="vm-ubuntu"
 
 
-echo "[INFO] Validate $PROFILE"
+echo "[INFO] Validate profile $PROFILE"
 docker run -it --rm \
+    --user "$(id -u):$(id -g)" \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
     chef/inspec:5.22.58 check "$PROFILE" --chef-license=accept-no-persist
 
 echo "[INFO] Run profile $PROFILE"
 docker run -it --rm \
+    --user "$(id -u):$(id -g)" \
     --volume "$(pwd):$(pwd)" \
     --workdir "$(pwd)" \
     chef/inspec:5.22.58 exec "$PROFILE" --chef-license=accept-no-persist
