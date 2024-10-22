@@ -6,25 +6,25 @@ control 'packages-01' do
     desc 'Software packages should be installed'
 
     PACKAGES = %w(
-        'apt-transport-https'
-        'ca-certificates'
-        'curl'
-        'gnupg'
-        'lsb-release'
-        'git'
-        'tilix'
-        'tmux'
-        'vim'
-        'ncdu'
-        'neofetch'
-        'htop'
-        'jq'
-        'docker-ce'
-        'docker-ce-cli'
-        'containerd.io'
-        'docker-buildx-plugin'
-        'docker-compose-plugin'
-        'inspec'
+        apt-transport-https
+        ca-certificates
+        curl
+        gnupg
+        lsb-release
+        git
+        tilix
+        tmux
+        vim
+        ncdu
+        neofetch
+        htop
+        jq
+        docker-ce
+        docker-ce-cli
+        containerd.io
+        docker-buildx-plugin
+        docker-compose-plugin
+        inspec
     )
     PACKAGES.each do |p|
         describe package(p) do
@@ -39,7 +39,7 @@ control 'packages-02' do
     desc 'Snap packages should be installed'
 
     SNAPS = %w(
-        '/snap/bin/code'
+        /snap/bin/code
     )
     SNAPS.each do |s|
         describe file(s) do
@@ -57,8 +57,8 @@ control 'packages-03' do
     desc 'Software packages run from binary commands should be installed'
 
     COMMANDS = %w(
-        '/usr/local/bin/helm'
-        '/usr/local/bin/minikube'
+        /usr/local/bin/helm
+        /usr/local/bin/minikube
     )
     COMMANDS.each do |c|
         describe file(c) do

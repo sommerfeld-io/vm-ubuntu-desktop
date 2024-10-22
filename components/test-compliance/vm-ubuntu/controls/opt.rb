@@ -6,9 +6,9 @@ control "opt-01" do
     desc "Check if scripts exist and have the correct permissions."
 
     SCRIPS = %w(
-        '/opt/vm-ubuntu/minikube-startup.sh'
-        '/opt/vm-ubuntu/minikube-shutdown.sh'
-        '/opt/vm-ubuntu/minikube-delete.sh'
+        /opt/vm-ubuntu/minikube-startup.sh
+        /opt/vm-ubuntu/minikube-shutdown.sh
+        /opt/vm-ubuntu/minikube-delete.sh
     )
     SCRIPS.each do |s|
         describe file(s) do
@@ -30,7 +30,7 @@ control "opt-02" do
     desc "Check if docker compose files exist and have the correct permissions."
 
     FILES = %w(
-        '/opt/vm-ubuntu/portainer/docker-compose.yml'
+        /opt/vm-ubuntu/portainer/docker-compose.yml
     )
     FILES.each do |f|
         describe file(f) do
