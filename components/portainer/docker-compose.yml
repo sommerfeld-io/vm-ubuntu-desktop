@@ -3,6 +3,7 @@ services:
 
   passwd:
     image: alpine:3.20.3
+    user: 1000:1000
     volumes: &volumes
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
