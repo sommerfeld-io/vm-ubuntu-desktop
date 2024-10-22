@@ -19,13 +19,11 @@ control 'packages-01' do
         'neofetch'
         'htop'
         'jq'
-        'code'
         'docker-ce'
         'docker-ce-cli'
         'containerd.io'
         'docker-buildx-plugin'
         'docker-compose-plugin'
-        'minikube'
         'inspec'
     )
     PACKAGES.each do |p|
@@ -40,11 +38,16 @@ control 'packages-02' do
     title 'Snap packages should be installed'
     desc 'Snap packages should be installed'
 
-    describe file('/snap/bin/code') do
-        it { should exist }
-        it { should be_file }
-        it { should_not be_directory }
-        it { should be_executable }
+    SNAPS = %w(
+        '/snap/bin/code'
+    )
+    SNAPS.each do |s|
+        describe file(s) do
+            it { should exist }
+            it { should be_file }
+            it { should_not be_directory }
+            it { should be_executable }
+        end
     end
 end
 
