@@ -63,7 +63,9 @@ control 'packages-03' do
     COMMANDS.each do |c|
         describe file(c) do
             it { should exist }
+            it { should be_file }
             it { should_not be_directory }
+            it { should be_executable }
         end
     end
 end
