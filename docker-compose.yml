@@ -55,6 +55,14 @@ services:
     command: .
     tty: *tty
 
+  lint-inspec-profile:
+    container_name: ${COMPOSE_PROJECT_NAME}-lint-inspec-profile
+    image: chef/inspec:5.22.36
+    volumes: *volumes
+    working_dir: *default-workdir
+    command: check components/test-compliance/vm-ubuntu --chef-license=accept-no-persist
+    tty: *tty
+
   docs-build:
     container_name: ${COMPOSE_PROJECT_NAME}-docs-build
     image: &docs-image sommerfeldio/mkdocs:latest

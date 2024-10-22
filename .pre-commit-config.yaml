@@ -46,6 +46,12 @@ repos:
         name: lint-folders
         language: script
         entry: /bin/bash -c 'docker compose up lint-folders --exit-code-from lint-folders'
+  - repo: local
+    hooks:
+      - id: lint-inspec-profile
+        name: lint-inspec-profile
+        language: script
+        entry: /bin/bash -c 'docker compose up lint-inspec-profile --exit-code-from lint-inspec-profile'
   # - repo: local
   #   hooks:
   #     - id: lint-dockerfile
