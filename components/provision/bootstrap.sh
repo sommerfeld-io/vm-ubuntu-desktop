@@ -118,8 +118,8 @@ readonly folders=(
 )
 for f in "${folders[@]}"; do
   sudo mkdir -p "$f"
-  chmod ugo+rw "$f"
-  chown "$(id -u):$(id -g)" "$f"
+  sudo chmod ugo+rw "$f"
+  sudo chown "$(id -u):$(id -g)" "$f"
 done
 
 
