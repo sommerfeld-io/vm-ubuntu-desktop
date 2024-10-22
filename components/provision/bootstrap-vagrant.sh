@@ -36,3 +36,10 @@ readonly aliases=(
 for alias in "${aliases[@]}"; do
   grep -qxF "$alias" "$bashrc" || echo "$alias" >> "$bashrc"
 done
+
+echo "[INFO] Clone repositories"
+mkdir -p work/repos
+(
+  cd work/repos || exit
+  git clone https://github.com/sommerfeld-io/vm-ubuntu.git
+)
