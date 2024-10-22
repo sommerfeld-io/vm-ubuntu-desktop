@@ -98,26 +98,8 @@ sudo apt-get clean
 sudo rm -rf /var/lib/apt/lists/*
 
 
-
-echo "[INFO] Docker version"
-docker version
-docker compose version
-
-
 echo "[INFO] Test docker"
 docker run --rm hello-world:latest
-
-
-echo "[INFO] Git version"
-git --version
-
-
-echo "[INFO] Minukube version"
-minikube version
-
-
-echo "[INFO] Helm version"
-helm version
 
 
 echo "[INFO] Setup folders"
