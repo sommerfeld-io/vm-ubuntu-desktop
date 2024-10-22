@@ -117,8 +117,9 @@ readonly folders=(
   '/opt/vm-ubuntu/portainer'
 )
 for f in "${folders[@]}"; do
-  mkdir -p "$f"
-  chmod ugo+rwx "$f"
+  sudo mkdir -p "$f"
+  chmod ugo+rw "$f"
+  chown "$(id -u):$(id -g)" "$f"
 done
 
 
