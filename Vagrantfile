@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "file", source: "components/k8s/minikube-delete.sh", destination: "/opt/vm-ubuntu/minikube-delete.sh"
 
   # Run inspec tests from script inside Vagrantbox
-  config.vm.provision "shell", inline: "(cd /vagrant/components/test-compliance && ./run.sh)"
+  config.vm.provision "shell", inline: "(cd /vagrant/components/test-compliance && ./run.sh)", privileged: false
 
   # Portainer
   config.vm.network "forwarded_port", guest: 7990, host: 7990
