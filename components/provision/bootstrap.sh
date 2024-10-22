@@ -123,8 +123,15 @@ done
 
 
 echo "[INFO] Download minikube scripts from repository"
-sudo curl -fsSL -o "$base_dir/minikube-start.sh" https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/k8s/minikube-start.sh
-sudo chmod 755 "$base_dir/minikube-start.sh"
+scripts=(
+  'minikube-start.sh'
+  'minikube-stop.sh'
+  'minikube-delete.sh'
+)
+for s in "${scripts[@]}"; do
+  sudo curl -fsSL -o "$base_dir/$s" "https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/k8s/$s"
+  sudo chmod 755 "$base_dir/$s"
+done
 
 echo "[INFO] Download Docker Compose config for Portainer from repository"
 sudo curl -fsSL -o "$base_dir/portainer/docker-compose.yml" https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/portainer/docker-compose.yml
@@ -138,6 +145,6 @@ echo "[INFO] ========================================================"
 echo "[INFO] Maybe you still need to add the user to the docker group"
 echo "[INFO]   sudo usermod -aG docker \$USER"
 echo "[INFO]"
-echo "[INFO] Documentation website: "
+echo "[INFO] Documentation"
 echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
 echo "[INFO] ========================================================"

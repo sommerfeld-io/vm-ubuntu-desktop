@@ -16,7 +16,7 @@ echo "[INFO] ========================================================"
 echo "[INFO] Running as user $USER"
 hostnamectl
 echo "[INFO] ========================================================"
-echo "[INFO] Documentation website:"
+echo "[INFO] Documentation"
 echo "[INFO]   https://sommerfeld-io.github.io/vm-ubuntu"
 echo "[INFO] ========================================================"
 

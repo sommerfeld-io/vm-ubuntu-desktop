@@ -65,7 +65,7 @@ minikube requires a virtualization software to run. The default hypervisor is `d
 minikube ships with a `kubectl` binary to interact with the minikube cluster. Keep in mind, that the bootstrap script creates a `kubectl` alias which points to `minikube kubectl` so this might conflict with other `kubectl` installations.
 
 ### Interact with minikube
-The bootstrap script downloads the `components/k8s/minikube-start.sh` script from this repo into `/opt/vm-ubuntu/minikube-start.sh`. The script is a utility to start minikube with some default settings  and starts minikube slightly different depending on whether it is running in a Vagrantbox or not.
+The bootstrap script downloads the `components/k8s/minikube-*.sh` scripts from this repo into `/opt/vm-ubuntu`. The scripts are utilities to start / stop / delete minikube with some default settings. minikube startup is slightly different depending on whether it is running in a Vagrantbox or not.
 
 ```bash
 minikube version
