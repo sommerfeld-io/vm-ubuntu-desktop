@@ -118,18 +118,20 @@ readonly folders=(
   '/opt/vm-ubuntu/portainer'
 )
 for f in "${folders[@]}"; do
-  mkdir -p "$f"
+  sudo mkdir -p "$f"
 done
-chmod -R ugo+rw "$base_dir"
-chown -R "$(id -u):$(id -g)" "$base_dir"
 
 
 echo "[INFO] Download minikube scripts from repository"
-curl -fsSL -o "$base_dir/minikube-start.sh" https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/k8s/minikube-start.sh
-chmod ugo+rwx "$base_dir/minikube-start.sh"
+sudo curl -fsSL -o "$base_dir/minikube-start.sh" https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/k8s/minikube-start.sh
+sudo chmod ugo+rwx "$base_dir/minikube-start.sh"
 
 echo "[INFO] Download Docker Compose config for Portainer from repository"
-curl -fsSL -o "$base_dir/portainer/docker-compose.yml" https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/portainer/docker-compose.yml
+sudo curl -fsSL -o "$base_dir/portainer/docker-compose.yml" https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/portainer/docker-compose.yml
+
+echo "[INFO] Set permissions in $base_dir"
+sudo chmod -R ugo+rxw "$base_dir"
+sudo chown -R "$(id -u):$(id -g)" "$base_dir"
 
 echo "[INFO] ========================================================"
 echo "[INFO] Maybe you still need to add the user to the docker group"
