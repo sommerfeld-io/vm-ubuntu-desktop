@@ -40,7 +40,6 @@ markdown_extensions:
 
 plugins:
   - kroki:
-      ServerURL: http://localhost:3888
   # - search:
 
 extra:
