@@ -118,6 +118,7 @@ scripts=(
   'minikube-startup.sh'
   'minikube-shutdown.sh'
   'minikube-delete.sh'
+  'minikube-dashboard.sh'
 )
 for s in "${scripts[@]}"; do
   sudo curl -fsSL -o "$base_dir/$s" "https://raw.githubusercontent.com/sommerfeld-io/vm-ubuntu/refs/heads/main/components/k8s/$s"

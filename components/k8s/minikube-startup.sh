@@ -39,14 +39,3 @@ echo "[INFO] Enable addons"
 minikube addons enable metrics-server
 minikube addons enable dashboard
 minikube addons enable ingress
-
-echo "[INFO] Start dashboard"
-readonly DASHBOARD_PORT="7999"
-if [ "$IS_VAGRANT" == true ]; then
-  echo "[INFO] ========================================================"
-  echo "[INFO] Remember to establish an SSH tunnel before accessing the"
-  echo "[INFO] dashboard through the browser"
-  echo "[INFO]   vagrant ssh -- -L $DASHBOARD_PORT:localhost:$DASHBOARD_PORT"
-  echo "[INFO] ========================================================"
-fi
-minikube dashboard --port "$DASHBOARD_PORT"
