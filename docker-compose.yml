@@ -97,3 +97,6 @@ services:
     ports:
       - 3080:8000
     tty: *tty
+    depends_on:
+      kroki:
+        condition: service_healthy
