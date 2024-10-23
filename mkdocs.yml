@@ -49,6 +49,8 @@ extra:
 
 nav:
   - Getting Started: index.md
+  - portainer.md
+  - minikube.md
   - About this project:
       - about/contribute.md
       - about/security.md
