@@ -11,6 +11,46 @@ minikube ships with a `kubectl` binary to interact with the minikube cluster. Ke
 ## Interact with minikube
 The bootstrap script downloads the `components/k8s/minikube-*.sh` scripts from this repo into `/opt/vm-ubuntu`. The scripts are utilities to start / stop / delete minikube with some default settings. minikube startup is slightly different depending on whether it is running in a Vagrantbox or not.
 
+### Running inside a Vagrantbox
+minikube binds itself to `127.0.0.1` (which represents the localhost from inside the Vagrantbox, not from the host). Requests from the host to the VM are not possible unless the `apiserver.bind-address` is changed.
+
+Make sure the Vagrantbox forwards all needed ports to the host.
+
+```bash
+# Startup inside Vagrantbox
+minikube start --extra-config=apiserver.service-node-port-range=7000-7080 --extra-config=apiserver.bind-address=0.0.0.0
+
+# Expose the minikube dashboard on specified port and without opening the browser
+minikube dashboard --port 7999 --url
+```
+
+Since the dashboard (despite setting the bind address) still only answers to requests from inside the Vagrantbox, you need an SSH tunnel to the dashboard inside the Vagrantbox.
+
+```bash
+vagrant ssh -- -L 7999:localhost:7999
+```
+
+`7999` is the port on the host which tunnels to `localhost:7999` inside the Vagrantbox. The port on the host must be a free port, so it cannot be part of the NodePort range.
+
+### Cluster with multiple nodes
+The `minikube-startup.sh` script accepts a flag `--nodes` to specify the number of nodes to start. The default is 1.
+
+```bash
+./minikube-startup.sh
+./minikube-startup.sh --nodes 3
+```
+
+Minikube determines the control plane and worker nodes based on the number of nodes. The control plane is always the first node, and the worker nodes are the rest. The control plane node is the node where the Kubernetes API server is running. The worker nodes are the nodes where the application workloads are scheduled.
+
+#### HAProxy
+*TODO ...* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+*TODO ...* Ditaa / Plantuml diagram
+
+### Increasing the NodePort range
+By default, minikube exposes ports `30000-32767`. If this does not work for you, you can adjust the range by using: `minikube start --extra-config=apiserver.service-node-port-range=1024-65535`
+
+### Example commands
 Some example commands to interact with minikube (which are also used by the scripts):
 
 ```bash
@@ -42,26 +82,5 @@ kubectl -- get po -A
 minikube service list # --namespace apps
 ```
 
-## Interact with minikube when running inside a Vagrantbox
-minikube binds itself to `127.0.0.1` (which represents the localhost from inside the Vagrantbox, not from the host). Requests from the host to the VM are not possible unless the `apiserver.bind-address` is changed.
-
-Make sure the Vagrantbox forwards all needed ports to the host.
-
-```bash
-# Startup inside Vagrantbox
-minikube start --extra-config=apiserver.service-node-port-range=7000-7080 --extra-config=apiserver.bind-address=0.0.0.0
-
-# Expose the minikube dashboard on specified port and without opening the browser
-minikube dashboard --port 7999 --url
-```
-
-Since the dashboard (despite setting the bind address) still only answers to requests from inside the Vagrantbox, you need an SSH tunnel to the dashboard inside the Vagrantbox.
-
-```bash
-vagrant ssh -- -L 7999:localhost:7999
-```
-
-`7999` is the port on the host which tunnels to `localhost:7999` inside the Vagrantbox. The port on the host must be a free port, so it cannot be part of the NodePort range.
-
-## Increasing the NodePort range
-By default, minikube exposes ports `30000-32767`. If this does not work for you, you can adjust the range by using: `minikube start --extra-config=apiserver.service-node-port-range=1024-65535`
+## ArgoCD
+*TODO ...* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
