@@ -79,6 +79,7 @@ control 'packages-99' do
         /tmp/minikube-linux-amd64
         /tmp/get_helm.sh
         /tmp/inspec.deb
+        /tmp/k9s.deb
     )
     ARTIFACT.each do |a|
         describe file(a) do

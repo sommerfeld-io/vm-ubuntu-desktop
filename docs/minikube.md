@@ -35,12 +35,14 @@ vagrant ssh -- -L 7999:localhost:7999
 ### Cluster with multiple nodes
 The `minikube-startup.sh` script accepts a flag `--nodes` to specify the number of nodes to start. The default is 1.
 
+Minikube determines the control plane and worker nodes based on the number of nodes. The control plane is always the first node, and the worker nodes are the rest. The control plane node is the node where the Kubernetes API server is running. The worker nodes are the nodes where the application workloads are scheduled.
+
 ```bash
-./minikube-startup.sh
-./minikube-startup.sh --nodes 3
+/opt/vm-ubuntu/minikube-startup.sh
+/opt/vm-ubuntu/minikube-startup.sh --nodes 3
 ```
 
-Minikube determines the control plane and worker nodes based on the number of nodes. The control plane is always the first node, and the worker nodes are the rest. The control plane node is the node where the Kubernetes API server is running. The worker nodes are the nodes where the application workloads are scheduled.
+When you want to change the number of nodes in the minikube cluster, you need to delete the existing cluster and start a new one with the desired number of nodes. Simply stopping and starting the cluster with another number of nodes does not work.
 
 #### HAProxy
 *TODO ...* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -49,6 +51,9 @@ Minikube determines the control plane and worker nodes based on the number of no
 
 ### Increasing the NodePort range
 By default, minikube exposes ports `30000-32767`. If this does not work for you, you can adjust the range by using: `minikube start --extra-config=apiserver.service-node-port-range=1024-65535`
+
+### k9s
+To interact with the cluster, you can use the [`k9s` cli tool](https://k9scli.io) (which is installed through the bootstrap script). It is a terminal-based UI to interact with your Kubernetes clusters. It allows you to navigate and manage your Kubernetes clusters with ease.
 
 ### Example commands
 Some example commands to interact with minikube (which are also used by the scripts):
