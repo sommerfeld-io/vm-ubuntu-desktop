@@ -25,6 +25,7 @@ control 'packages-01' do
         docker-buildx-plugin
         docker-compose-plugin
         inspec
+        k9s
     )
     PACKAGES.each do |p|
         describe package(p) do
